@@ -7,7 +7,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
     vim.api.nvim_echo({
       { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
       { out, "WarningMsg" },
-     { "\nPress any key to exit..." },
+      { "\nPress any key to exit..." },
     }, true, {})
     vim.fn.getchar()
     os.exit(1)
@@ -24,9 +24,21 @@ vim.g.maplocalleader = "\\"
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
+
+    -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import your plugins
-    "EdenEast/nightfox.nvim", -- lazy
-    "tpope/vim-fugitive",
+    "neovim/nvim-lspconfig",
+    "EdenEast/nightfox.nvim", -- replacement for tokyo night
+    "github/copilot.vim",
+
+--    "nvim-treesitter/nvim-treesitter-textobjects",
+    "rafamadriz/friendly-snippets",
+
     { import = "nimzahed.plugins" },
   },
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+
+  -- automatically check for plugin updates
+  checker = { enabled = true },
 })

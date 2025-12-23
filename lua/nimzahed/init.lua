@@ -1,6 +1,6 @@
-require("nimzahed.set")
-require("nimzahed.remap")
 require("nimzahed.lazy")
 require("nimzahed.lsp")
+require("nimzahed.remap")
+require("nimzahed.set")
+require("nimzahed.filetype")
 
-print("nimzahed plugins completly initialized!")
