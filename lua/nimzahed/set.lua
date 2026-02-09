@@ -9,14 +9,14 @@ vim.opt.expandtab = true  -- Use spaces instead of TAB characters
 
 vim.opt.smartindent = true
 
-vim.opt.wrap = false
+vim.opt.wrap = true
 
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = vim.fn.stdpath("cache") .. "/undodir"
 vim.opt.undofile = true
 
-vim.opt.hlsearch = false
+vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
 vim.opt.termguicolors = true

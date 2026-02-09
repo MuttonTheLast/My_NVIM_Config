@@ -5,6 +5,8 @@ vim.lsp.enable('cssls')
 vim.lsp.enable("clangd")
 vim.lsp.enable("omnisharp")
 vim.lsp.enable("slangd")
+vim.lsp.enable('quick_lint_js')
+vim.lsp.enable('zls')
 
 
 local SingleLine = false;
@@ -35,5 +37,9 @@ function ToggleLspText()
 end
 ToggleLspText()
 
-vim.keymap.set("n", "<leader>vl",ToggleLspText )
-
+vim.api.nvim_create_autocmd("BufWritePre", {
+    pattern = {"*.*"},
+    callback = function()
+        vim.lsp.buf.format()
+    end,
+})

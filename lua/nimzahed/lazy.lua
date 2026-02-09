@@ -28,8 +28,19 @@ require("lazy").setup({
     -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
     -- import your plugins
     "neovim/nvim-lspconfig",
-    "EdenEast/nightfox.nvim", -- replacement for tokyo night
     "github/copilot.vim",
+
+    -- INFO: Colors
+    "EdenEast/nightfox.nvim", -- replacement for tokyo night
+    "catppuccin/nvim",
+    "rose-pine/neovim",
+    "catppuccin/nvim",
+    "folke/tokyonight.nvim",
+    "rebelot/kanagawa.nvim",
+    "sainnhe/gruvbox-material",
+    "wadackel/vim-dogrun",
+    "Mofiqul/vscode.nvim",
+    -- INFO: END COLORS
 
 --    "nvim-treesitter/nvim-treesitter-textobjects",
     "rafamadriz/friendly-snippets",

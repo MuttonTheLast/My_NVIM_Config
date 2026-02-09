@@ -1,9 +1,10 @@
 
 function CustomColorSetup(color)
     color = color or "carbonfox"
-
+    color = vim.trim(color)
 	if (color) then 
 		vim.cmd("colorscheme "..color)
+        setElementData("colorscheme", color, true)
 	end
 --[[
     -- transparent background
@@ -19,4 +20,58 @@ function CustomColorSetup(color)
     end]]
 end
 
-CustomColorSetup()
+local colorCounter = 0
+local colors = {
+    "rose-pine",
+    -- catppuccin
+    "catppuccin",
+    -- "catppuccin-latte", -- fuck it was light my eyes
+    "catppuccin-frappe",
+    "catppuccin-macchiato",
+    "catppuccin-mocha",
+    -- fox
+    "nightfox",
+    "duskfox",
+    "nordfox",
+    "terafox",
+    "carbonfox",
+    -- tokyo
+    "tokyonight-night",
+    "tokyonight-storm",
+    "tokyonight-moon",
+    -- kanagawa
+    "kanagawa-wave",
+    "kanagawa-dragon",
+    -- "kanagawa-lotus", -- flashbang
+    -- vs code. its good for some languages.
+    "vscode"
+
+}
+function SetColor(data)
+    data = data or 1
+    if tonumber(data) then -- if data is number
+	data = (data > #colors or data < 1) and 1 or data
+        CustomColorSetup(colors[data])
+        print("Color Changed: "..colors[data].." - "..data.."/"..#colors)
+    else
+        CustomColorSetup(data)
+    end
+end
+
+function SetNextColor()
+    colorCounter = colorCounter + 1
+    colorCounter = (colorCounter > #colors) and 1 or colorCounter
+    SetColor(colorCounter)
+end
+function SetPrevColor()
+    colorCounter = colorCounter - 1
+    colorCounter = (colorCounter < 1) and #colors or colorCounter
+    SetColor(colorCounter)
+end
+
+local scheme = getElementData("colorscheme")
+if not scheme then
+    setElementData("colorscheme", "carbonfox")
+end
+CustomColorSetup(scheme)
+

@@ -116,3 +116,12 @@ vim.keymap.set("n", "<leader>ln", function()
         vim.wo.number = true
     end
 end, { desc = "Toggle line numbers" })
+
+
+vim.keymap.set("n", "<leader>vl",ToggleLspText )
+
+
+vim.keymap.set("n", "<leader><C-j>", SetNextColor);
+vim.keymap.set("n", "<leader><C-k>", SetPrevColor);
+
+
