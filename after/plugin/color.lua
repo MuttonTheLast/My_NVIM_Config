@@ -1,12 +1,11 @@
-
 function CustomColorSetup(color)
     color = color or "carbonfox"
     color = vim.trim(color)
-	if (color) then 
-		vim.cmd("colorscheme "..color)
+    if (color) then
+        vim.cmd("colorscheme " .. color)
         setElementData("colorscheme", color, true)
-	end
---[[
+    end
+    --[[
     -- transparent background
     local groups = {
         'Normal', 'NormalNC', 'Comment', 'Constant', 'Special', 'Identifier',
@@ -15,12 +14,19 @@ function CustomColorSetup(color)
         'SignColumn', 'CursorLine', 'CursorLineNr', 'StatusLine', 'StatusLineNC',
         'EndOfBuffer',
     }
-    for i,v in ipairs(groups) do 
+    for i,v in ipairs(groups) do
         vim.api.nvim_set_hl(0, v, { bg = 'none' })
     end]]
 end
 
-local colorCounter = 0
+local colorCounter = tonumber(getElementData("colorCounter"))
+if not colorCounter then
+    setElementData("colorCounter", 1);
+    colorCounter = 1;
+else
+    colorCounter = colorCounter - 1;
+end
+
 local colors = {
     "rose-pine",
     -- catppuccin
@@ -50,28 +56,29 @@ local colors = {
 function SetColor(data)
     data = data or 1
     if tonumber(data) then -- if data is number
-	data = (data > #colors or data < 1) and 1 or data
+        data = (data > #colors or data < 1) and 1 or data
         CustomColorSetup(colors[data])
-        print("Color Changed: "..colors[data].." - "..data.."/"..#colors)
+        print("Color Changed: " .. colors[data] .. " - " .. data .. "/" .. #colors)
+        colorCounter = data
+        setElementData("colorCounter", colorCounter)
     else
         CustomColorSetup(data)
     end
 end
 
 function SetNextColor()
-    colorCounter = colorCounter + 1
-    colorCounter = (colorCounter > #colors) and 1 or colorCounter
+    colorCounter = (colorCounter % #colors) + 1
     SetColor(colorCounter)
 end
+
 function SetPrevColor()
-    colorCounter = colorCounter - 1
-    colorCounter = (colorCounter < 1) and #colors or colorCounter
+    colorCounter = ((colorCounter - 2 + #colors) % #colors) + 1
     SetColor(colorCounter)
 end
 
 local scheme = getElementData("colorscheme")
 if not scheme then
     setElementData("colorscheme", "carbonfox")
+    scheme = "carbonfox"
 end
 CustomColorSetup(scheme)
-

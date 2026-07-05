@@ -1,11 +1,10 @@
-
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
-vim.opt.tabstop = 4       -- Number of visual spaces per TAB
-vim.opt.softtabstop = 4   -- Number of spaces inserted when hitting TAB
-vim.opt.shiftwidth = 4    -- Number of spaces for each indentation
-vim.opt.expandtab = true  -- Use spaces instead of TAB characters
+vim.opt.tabstop = 4      -- Number of visual spaces per TAB
+vim.opt.softtabstop = 4  -- Number of spaces inserted when hitting TAB
+vim.opt.shiftwidth = 4   -- Number of spaces for each indentation
+vim.opt.expandtab = true -- Use spaces instead of TAB characters
 
 vim.opt.smartindent = true
 

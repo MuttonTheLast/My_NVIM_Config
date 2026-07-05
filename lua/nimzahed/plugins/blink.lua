@@ -25,8 +25,8 @@ return {
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { 
-            preset = 'super-tab', -- base preset
+        keymap = {
+            preset = 'super-tab',                -- base preset
             ['<CR>'] = { 'accept', 'fallback' }, -- add Enter confirm from "enter" preset
         },
 
@@ -37,7 +37,7 @@ return {
         },
 
         -- (Default) Only show the documentation popup when manually triggered
-        completion = { documentation = { auto_show = true }},
+        completion = { documentation = { auto_show = true } },
         signature = { enabled = true },
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`

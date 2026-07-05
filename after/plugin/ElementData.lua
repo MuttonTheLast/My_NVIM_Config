@@ -1,5 +1,3 @@
-
-
 -- Path to userdata.json inside Neovim's data directory
 local config_file = vim.fn.stdpath("data") .. "/userdata.json"
 
@@ -41,7 +39,6 @@ function getElementData(key)
 end
 
 function setElementData(key, value, saveit)
-    
     cache_data[key] = value
     if saveit and saveit == true then
         save()
@@ -50,7 +47,7 @@ end
 
 function delElementData(key, saveit)
     cache_data[key] = nil
-    
+
     if saveit and saveit == true then
         save()
     end
@@ -64,7 +61,7 @@ end
 load()
 
 vim.api.nvim_create_autocmd("VimLeavePre", {
-  callback = function()
-    config._save()
-  end,
+    callback = function()
+        config._save()
+    end,
 })
