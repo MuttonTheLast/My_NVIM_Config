@@ -1,17 +1,17 @@
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
+    local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+    local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+    if vim.v.shell_error ~= 0 then
+        vim.api.nvim_echo({
+            { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+            { out,                            "WarningMsg" },
+            { "\nPress any key to exit..." },
+        }, true, {})
+        vim.fn.getchar()
+        os.exit(1)
+    end
 end
 vim.opt.rtp:prepend(lazypath)
 
@@ -23,33 +23,35 @@ vim.g.maplocalleader = "\\"
 
 -- Setup lazy.nvim
 require("lazy").setup({
-  spec = {
+    spec = {
 
-    -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
-    -- import your plugins
-    "neovim/nvim-lspconfig",
-    "github/copilot.vim",
+        -- { "LazyVim/LazyVim", import = "lazyvim.plugins" },
+        -- import your plugins
+        "neovim/nvim-lspconfig",
+        "github/copilot.vim",
+        "nvim-mini/mini.icons",
+        'nvim-mini/mini.pairs',
+        "lewis6991/gitsigns.nvim",
+        -- INFO: Colors
+        "EdenEast/nightfox.nvim", -- replacement for tokyo night
+        "catppuccin/nvim",
+        "rose-pine/neovim",
+        "catppuccin/nvim",
+        "folke/tokyonight.nvim",
+        "rebelot/kanagawa.nvim",
+        "sainnhe/gruvbox-material",
+        "wadackel/vim-dogrun",
+        "Mofiqul/vscode.nvim",
+        -- INFO: END COLORS
 
-    -- INFO: Colors
-    "EdenEast/nightfox.nvim", -- replacement for tokyo night
-    "catppuccin/nvim",
-    "rose-pine/neovim",
-    "catppuccin/nvim",
-    "folke/tokyonight.nvim",
-    "rebelot/kanagawa.nvim",
-    "sainnhe/gruvbox-material",
-    "wadackel/vim-dogrun",
-    "Mofiqul/vscode.nvim",
-    -- INFO: END COLORS
+        --    "nvim-treesitter/nvim-treesitter-textobjects",
+        "rafamadriz/friendly-snippets",
 
---    "nvim-treesitter/nvim-treesitter-textobjects",
-    "rafamadriz/friendly-snippets",
+        { import = "nimzahed.plugins" },
+    },
+    -- Configure any other settings here. See the documentation for more details.
+    -- colorscheme that will be used when installing plugins.
 
-    { import = "nimzahed.plugins" },
-  },
-  -- Configure any other settings here. See the documentation for more details.
-  -- colorscheme that will be used when installing plugins.
-
-  -- automatically check for plugin updates
-  checker = { enabled = true },
+    -- automatically check for plugin updates
+    checker = { enabled = true },
 })
